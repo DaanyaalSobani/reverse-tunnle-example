@@ -42,7 +42,7 @@ You need a VPS with a public IP. A $4/month DigitalOcean droplet is plenty.
 **1. On your VPS**, clone this repo and start the relay:
 
 ```bash
-git clone https://github.com/<your-username>/reverse-tunnel-demo.git
+git clone https://github.com/DaanyaalSobani/reverse-tunnle-example.git
 cd reverse-tunnel-demo
 sudo python3 relay_server.py
 ```
