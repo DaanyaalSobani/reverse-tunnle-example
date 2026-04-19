@@ -21,6 +21,8 @@ Run it with (port 80 requires root):
 
 import asyncio
 
+from config import PUBLIC_PORT, TUNNEL_PORT
+
 
 # Queue of available tunnel connections waiting to carry a public request.
 # In a real, multi-tenant system this would be a dict keyed by hostname.
@@ -99,12 +101,12 @@ async def handle_public_request(
 
 async def main() -> None:
     tunnel_server = await asyncio.start_server(
-        handle_tunnel_client, "0.0.0.0", 9000
+        handle_tunnel_client, "0.0.0.0", TUNNEL_PORT
     )
     public_server = await asyncio.start_server(
-        handle_public_request, "0.0.0.0", 80
+        handle_public_request, "0.0.0.0", PUBLIC_PORT
     )
-    print("[relay] listening on :9000 (tunnel) and :80 (public)")
+    print(f"[relay] listening on :{TUNNEL_PORT} (tunnel) and :{PUBLIC_PORT} (public)")
     async with tunnel_server, public_server:
         await asyncio.gather(
             tunnel_server.serve_forever(),

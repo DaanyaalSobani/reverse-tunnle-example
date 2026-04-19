@@ -22,10 +22,7 @@ Run it with:
 import asyncio
 import sys
 
-
-LOCAL_HOST = "127.0.0.1"
-LOCAL_PORT = 8080
-RELAY_PORT = 9000
+from config import LOCAL_HOST, LOCAL_PORT, TUNNEL_PORT as RELAY_PORT
 
 
 async def pipe(src: asyncio.StreamReader, dst: asyncio.StreamWriter) -> None:
